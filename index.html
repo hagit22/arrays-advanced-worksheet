@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>דף עבודה – מערכים מתקדם</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      color: #2d3748;
+      margin: 0;
+      padding: 20px;
+      direction: rtl;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 40px 50px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2b4a8f;
+      font-size: 1.8rem;
+      border-bottom: 3px solid #2b4a8f;
+      padding-bottom: 15px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 35px;
+      font-size: 1rem;
+    }
+
+    .intro-box {
+      background: #eef2ff;
+      border-right: 4px solid #2b4a8f;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 35px;
+      font-size: 1rem;
+    }
+
+    .section {
+      margin-bottom: 45px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .section-header {
+      background: #2b4a8f;
+      color: white;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .section-body {
+      padding: 25px;
+    }
+
+    .step {
+      margin-bottom: 20px;
+    }
+
+    .step-label {
+      font-weight: bold;
+      color: #2b4a8f;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      margin: 0 0 8px 0;
+    }
+
+    .question {
+      background: #f8fafc;
+      border-right: 3px solid #0ea5e9;
+      padding: 10px 15px;
+      margin: 12px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 1rem;
+    }
+
+    .answer-box {
+      width: 100%;
+      min-height: 60px;
+      border: 1px solid #cbd5e0;
+      border-radius: 8px;
+      padding: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      direction: rtl;
+      margin-top: 6px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+
+    .hint-btn {
+      background: none;
+      border: 1.5px solid #aaa;
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 0.9rem;
+      color: #555;
+      cursor: pointer;
+      margin-top: 6px;
+      font-family: inherit;
+      direction: rtl;
+      transition: all 0.2s ease;
+    }
+
+    .hint-btn:hover {
+      border-color: #2b4a8f;
+      color: #2b4a8f;
+    }
+
+    .hint-content {
+      display: none;
+      background: #fffbea;
+      border: 1px solid #f6d860;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    .hint-content.visible {
+      display: block;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .code-block {
+      display: block;
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin: 10px 0;
+      white-space: pre;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      font-family: 'Courier New', monospace;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 20px 0;
+    }
+
+    .file-nudge {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      color: #166534;
+    }
+
+    .approach-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .approach-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 220px;
+    }
+
+    .approach-fork {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      letter-spacing: 40px;
+      padding-right: 40px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <h1>דף עבודה: מערכים - מתחת לפני השטח</h1>
+  <div class="subtitle"></div>
+
+  <!--div class="intro-box">
+    בדף העבודה הזה תתנסו בתופעות שאולי יפתיעו אתכם. לפני כל הרצה – ענו על השאלה "מה אתם מצפים לראות?". אחרי ההרצה – ענו על מה שראיתם בפועל. ההפתעות הן חלק מהלמידה. 😊
+  </div-->
+
+  <!-- ===== SECTION 1: COPYING ARRAYS ===== -->
+  <div class="section">
+    <div class="section-header">חלק א׳ – העתקת מערך</div>
+    <div class="section-body">
+
+      <div class="file-nudge">
+        📁 צרו פרויקט חדש ב-Visual Studio. שם הקובץ: <code>ArrayCopy.cs</code>
+      </div>
+
+      <!-- STAGE 1 -->
+      <div class="step">
+        <div class="step-label">שלב 1</div>
+        <p>הכניסו את הקוד הבא:</p>
+        <div class="code-block">int[] myArr1 = {10, 20, 30, 40, 50};
+int[] myArr2 = new int[5];
+
+Console.WriteLine("--- myArr1 ---");
+for (int i = 0; i &lt; myArr1.Length; i++)
+    Console.WriteLine("myArr1[" + i + "] = " + myArr1[i]);
+
+Console.WriteLine("--- myArr2 ---");
+for (int i = 0; i &lt; myArr2.Length; i++)
+    Console.WriteLine("myArr2[" + i + "] = " + myArr2[i]);</div>
+        <div class="question">🤔 מה אתם מצפים לראות בפלט?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט המצופה...."></textarea>
+        <p style="margin-top:14px;"><strong>הריצו את הקוד ◀</strong></p>
+        <div class="question">🤔 מה קיבלתם?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט שהתקבל..."></textarea>
+        <div class="question">🤔 למה קיבלתם תוצאה זו?</div>
+        <textarea class="answer-box" placeholder="כתבו את ההסבר שלכם לתוצאה שהתקבלה..."></textarea>
+      </div>
+
+      <hr class="divider">
+
+      <!-- STAGE 2 -->
+      <div class="step">
+        <div class="step-label">שלב 2</div>
+        <p>הוסיפו את השורות החדשות (NEW LINES TO ADD) :</p>
+        <div class="code-block">int[] myArr1 = {10, 20, 30, 40, 50};
+int[] myArr2 = new int[5];
+
+Console.WriteLine("--- myArr1 ---");
+for (int i = 0; i &lt; myArr1.Length; i++)
+    Console.WriteLine("myArr1[" + i + "] = " + myArr1[i]);
+
+Console.WriteLine("--- myArr2 ---");
+for (int i = 0; i &lt; myArr2.Length; i++)
+    Console.WriteLine("myArr2[" + i + "] = " + myArr2[i]);
+
+
+// ---------- NEW LINES TO ADD (copy starting here) ------------------
+
+myArr2 = myArr1;
+
+Console.WriteLine("--- myArr1 ---");
+for (int i = 0; i &lt; myArr1.Length; i++)
+    Console.WriteLine("myArr1[" + i + "] = " + myArr1[i]);
+
+Console.WriteLine("--- myArr2 ---");
+for (int i = 0; i &lt; myArr2.Length; i++)
+    Console.WriteLine("myArr2[" + i + "] = " + myArr2[i]);
+
+//---------------------------------------------------------------------</div>
+        <div class="question">🤔 מה אתם מצפים לראות בפלט החדש?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט המצופה...."></textarea>
+        <p style="margin-top:14px;"><strong>הריצו את הקוד ◀</strong></p>
+        <div class="question">🤔 מה קיבלתם?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט שהתקבל..."></textarea>
+        <div class="question">🤔 למה קיבלתם תוצאה זו?</div>
+        <textarea class="answer-box" placeholder="כתבו את ההסבר שלכם לתוצאה שהתקבלה..."></textarea>
+      </div>
+
+      <hr class="divider">
+
+      <!-- STAGE 3 -->
+      <div class="step">
+        <div class="step-label">שלב 3</div>
+        <p>הוסיפו עוד שורות חדשות (NEW LINES TO ADD) :</p>
+        <div class="code-block">int[] myArr1 = {10, 20, 30, 40, 50};
+int[] myArr2 = new int[5];
+
+Console.WriteLine("--- myArr1 ---");
+for (int i = 0; i &lt; myArr1.Length; i++)
+    Console.WriteLine("myArr1[" + i + "] = " + myArr1[i]);
+
+Console.WriteLine("--- myArr2 ---");
+for (int i = 0; i &lt; myArr2.Length; i++)
+    Console.WriteLine("myArr2[" + i + "] = " + myArr2[i]);
+
+myArr2 = myArr1;
+
+Console.WriteLine("--- myArr1 ---");
+for (int i = 0; i &lt; myArr1.Length; i++)
+    Console.WriteLine("myArr1[" + i + "] = " + myArr1[i]);
+
+Console.WriteLine("--- myArr2 ---");
+for (int i = 0; i &lt; myArr2.Length; i++)
+    Console.WriteLine("myArr2[" + i + "] = " + myArr2[i]);
+
+// ---------- NEW LINES TO ADD (copy starting here) ------------------
+
+myArr1[2] = 99;
+
+Console.WriteLine("--- myArr1 ---");
+for (int i = 0; i &lt; myArr1.Length; i++)
+    Console.WriteLine("myArr1[" + i + "] = " + myArr1[i]);
+
+Console.WriteLine("--- myArr2 ---");
+for (int i = 0; i &lt; myArr2.Length; i++)
+    Console.WriteLine("myArr2[" + i + "] = " + myArr2[i]);
+
+//---------------------------------------------------------------------</div>
+        <div class="question">🤔 מה אתם מצפים לראות בפלט החדש?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט המצופה...."></textarea>
+        <p style="margin-top:14px;"><strong>הריצו את הקוד ◀</strong></p>
+        <div class="question">🤔 מה קיבלתם?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט שהתקבל..."></textarea>
+        <div class="question">🤔 למה קיבלתם תוצאה זו?</div>
+        <textarea class="answer-box" placeholder="כתבו את ההסבר שלכם לתוצאה שהתקבלה..."></textarea>
+      </div>
+
+      <hr class="divider">
+
+      <!-- SUMMARY - DIAGRAMS -->
+      <div class="step">
+        <div class="step-label">סיכום חלק א׳ – מה קרה כאן?</div>
+        <p>כדי להבין מה קרה, צריך להבין איך הזיכרון עובד:</p>
+
+        <p><strong>משתנים פרימיטיביים – וה- Stack:</strong></p>
+        <p>כשמגדירים משתנה פרימיטיבי כמו <code>int</code>, <code>char</code> או <code>bool</code> – המחשב יודע בדיוק כמה זיכרון לשמור לו. לכן הערך עצמו נשמר ישירות בזיכרון שנקרא <strong>Stack</strong>:</p>
+        <div style="direction:ltr; text-align:left; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px; margin:10px 0; font-family:'Courier New',monospace; font-size:0.9rem;">
+          <div style="border:2px solid #2b4a8f; border-radius:6px; padding:10px; display:inline-block; min-width:240px;">
+            <div style="text-align:center; color:#2b4a8f; font-weight:bold; margin-bottom:8px;">STACK</div>
+            <div style="border:1px solid #94a3b8; padding:6px 10px; margin:4px 0; background:#e0f2fe;">int num = 10 &nbsp;&nbsp;&nbsp; [4 bytes]</div>
+            <div style="border:1px solid #94a3b8; padding:6px 10px; margin:4px 0; background:#e0f2fe;">char c = 'A' &nbsp;&nbsp; [2 bytes]</div>
+            <div style="border:1px solid #94a3b8; padding:6px 10px; margin:4px 0; background:#e0f2fe;">bool flag = true &nbsp; [1 byte]</div>
+          </div>
+        </div>
+        <p>כל משתנה מקבל את המקום המדויק שהוא צריך, והערך שלו מאוחסן שם ישירות.</p>
+
+        <p style="margin-top:16px;"><strong>מערכים – וה- Heap:</strong></p>
+        <p>אבל מה קורה עם מערך? אנחנו יודעים שתא מטיפוס <code>int</code> תופס 4 בתים – אבל לא ידוע מראש כמה תאים יהיו. לכן אי אפשר לשמור מערך ב- Stack.</p>
+        <p>הפיתרון: המערך עצמו נשמר בזיכרון גמיש יותר שנקרא <strong>Heap</strong>. וב- Stack נשמרת <strong>כתובת</strong> – שמייצגת היכן נמצא המערך ב- Heap:</p>
+        <div style="direction:ltr; text-align:left; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px; margin:10px 0; font-family:'Courier New',monospace; font-size:0.9rem; display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+          <div>
+            <div style="border:2px solid #2b4a8f; border-radius:6px; padding:10px; display:inline-block; min-width:240px;">
+              <div style="text-align:center; color:#2b4a8f; font-weight:bold; margin-bottom:8px;">STACK</div>
+              <div style="border:1px solid #94a3b8; padding:6px 10px; margin:4px 0; background:#e0f2fe;">int num = 10 &nbsp;&nbsp;&nbsp; [4 bytes]</div>
+              <div style="border:1px solid #94a3b8; padding:6px 10px; margin:4px 0; background:#e0f2fe;">char c = 'A' &nbsp;&nbsp; [2 bytes]</div>
+              <div style="border:1px solid #94a3b8; padding:6px 10px; margin:4px 0; background:#e0f2fe;">bool flag = true &nbsp; [1 byte]</div>
+              <div style="border:1px solid #94a3b8; padding:6px 10px; margin:4px 0; background:#fef3c7;">myArr1 = <span style="color:#ef4444; font-weight:bold; font-size:1rem;">0x4A2F</span> &nbsp; [4 bytes]</div>
+            </div>
+          </div>
+          <div style="font-size:1.8rem; color:#ef4444;">⟶</div>
+          <div>
+            <div style="border:2px solid #f97316; border-radius:6px; padding:10px; display:inline-block; min-width:230px;">
+              <div style="text-align:center; color:#f97316; font-weight:bold; margin-bottom:8px;">HEAP</div>
+              <div style="border:1px solid #94a3b8; padding:4px 8px; margin:2px 0; background:#fff7ed; font-size:0.8rem;">... other memory ...</div>
+              <div style="border:2px solid #ef4444; padding:6px 10px; margin:4px 0; background:#fff7ed;">
+                <div style="color:#ef4444; font-weight:bold; font-size:0.9rem;">address <span style="font-size:1rem;">0x4A2F</span>:</div>
+                [10][20][30][40][50]
+              </div>
+              <div style="border:1px solid #94a3b8; padding:4px 8px; margin:2px 0; background:#fff7ed; font-size:0.8rem;">... other memory ...</div>
+            </div>
+          </div>
+        </div>
+        <p>המשתנה <code>myArr1</code> ב- Stack מחזיק את הכתובת <span style="color:#ef4444; font-weight:bold;">0x4A2F</span> – כלומר "המערך שלי נמצא בכתובת הזו ב- Heap".</p>
+
+        <p style="margin-top:16px;"><strong>מה קורה כשכותבים <code>myArr2 = myArr1</code>?</strong></p>
+        <p>השורה הזו מעתיקה את <strong>הכתובת</strong> – לא את המערך. עכשיו גם <code>myArr2</code> מצביע לאותו מקום ב- Heap:</p>
+        <div style="direction:ltr; text-align:left; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px; margin:10px 0; font-family:'Courier New',monospace; font-size:0.9rem; display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+          <div>
+            <div style="border:2px solid #2b4a8f; border-radius:6px; padding:10px; display:inline-block; min-width:240px;">
+              <div style="text-align:center; color:#2b4a8f; font-weight:bold; margin-bottom:8px;">STACK</div>
+              <div style="border:1px solid #94a3b8; padding:6px 10px; margin:4px 0; background:#fef3c7;">myArr1 = <span style="color:#ef4444; font-weight:bold; font-size:1rem;">0x4A2F</span> &nbsp; [4 bytes]</div>
+              <div style="border:1px solid #94a3b8; padding:6px 10px; margin:4px 0; background:#fef3c7;">myArr2 = <span style="color:#ef4444; font-weight:bold; font-size:1rem;">0x4A2F</span> &nbsp; [4 bytes]</div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:20px; color:#ef4444; font-size:1.8rem;">
+            <span>⟶</span>
+            <span>⟶</span>
+          </div>
+          <div>
+            <div style="border:2px solid #f97316; border-radius:6px; padding:10px; display:inline-block; min-width:230px;">
+              <div style="text-align:center; color:#f97316; font-weight:bold; margin-bottom:8px;">HEAP</div>
+              <div style="border:2px solid #ef4444; padding:6px 10px; margin:4px 0; background:#fff7ed;">
+                <div style="color:#ef4444; font-weight:bold; font-size:0.9rem;">address <span style="font-size:1rem;">0x4A2F</span>:</div>
+                [10][20][30][40][50]
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>שני המשתנים מצביעים לאותו מערך. שינוי דרך אחד משפיע על השני – כי הם מצביעים על אותו מקום בזיכרון.</p>
+      </div>
+
+      <hr class="divider">
+
+      <!-- STAGE 4 -->
+      <div class="step">
+        <div class="step-label">שלב 4 – איך יוצרים עותק אמיתי?</div>
+        <p>הוסיפו הערה לפני השורה הבאה:</p>
+        <div class="code-block">// myArr2 = myArr1;</div>
+        <p>ובמקומה הוסיפו:</p>
+        <div class="code-block">for (int i = 0; i &lt; myArr1.Length; i++)
+    myArr2[i] = myArr1[i];</div>
+        <p style="margin-top:14px;"><strong>הריצו את הקוד ◀</strong></p>
+        <div class="question">🤔 מה אתם מצפים לראות בפלט?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט המצופה...."></textarea>
+        <div class="question">🤔 מה קיבלתם?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט שהתקבל..."></textarea>
+        <div class="question">🤔 למה קיבלתם תוצאה זו?</div>
+        <textarea class="answer-box" placeholder="כתבו את ההסבר שלכם לתוצאה שהתקבלה..."></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== SECTION 2: PASS PARAMETER ===== -->
+  <div class="section">
+    <div class="section-header">חלק ב׳ – העברת פרמטר לפעולה</div>
+    <div class="section-body">
+
+      <div class="file-nudge">
+        📁 צרו פרויקט חדש ב-Visual Studio. שם הקובץ: <code>PassParameter.cs</code>
+      </div>
+
+      <!-- PRIMITIVE -->
+      <div class="step">
+        <div class="step-label">שלב 1 – טיפוס פשוט</div>
+        <p>הכניסו את הקוד הבא:</p>
+        <div class="code-block">static void Main()
+{
+    int num = 10;
+    Console.WriteLine("before: num = " + num);
+    DoubleIt(num);
+    Console.WriteLine("after: num = " + num);
+}
+
+static void DoubleIt(int num)
+{
+    num = num * 2;
+    Console.WriteLine("inside method: num = " + num);
+}</div>
+        <div class="question">🤔 מה אתם מצפים לראות בפלט?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט המצופה...."></textarea>
+        <p style="margin-top:14px;"><strong>הריצו את הקוד ◀</strong></p>
+        <div class="question">🤔 מה קיבלתם?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט שהתקבל..."></textarea>
+        <div class="question">🤔 למה קיבלתם תוצאה זו?</div>
+        <textarea class="answer-box" placeholder="כתבו את ההסבר שלכם לתוצאה שהתקבלה..."></textarea>
+      </div>
+
+      <hr class="divider">
+
+      <!-- ARRAY -->
+      <div class="step">
+        <div class="step-label">שלב 2 – מערך</div>
+        <p>הוסיפו את השורות חדשות (NEW LINES TO ADD) :</p>
+        <p>ואת <b>הפעולה <i>DoubleAll </i>החדשה</b> (NEW METHOD TO ADD) :</p>
+        <div class="code-block">static void Main()
+{
+    int num = 10;
+    Console.WriteLine("before: num = " + num);
+    DoubleIt(num);
+    Console.WriteLine("after: num = " + num);
+
+// ---------- NEW LINES TO ADD (copy starting here) ------------------
+
+    int[] numbers = {1, 2, 3, 4, 5};
+    Console.WriteLine("--- before ---");
+    for (int i = 0; i &lt; numbers.Length; i++)
+        Console.WriteLine("numbers[" + i + "] = " + numbers[i]);
+    DoubleAll(numbers);
+    Console.WriteLine("--- after ---");
+    for (int i = 0; i &lt; numbers.Length; i++)
+        Console.WriteLine("numbers[" + i + "] = " + numbers[i]);
+
+//--------------------------------------------------------------------
+}
+
+static void DoubleIt(int num)
+{
+    num = num * 2;
+    Console.WriteLine("inside method: num = " + num);
+}
+
+// ---------- NEW METHOD TO ADD ------------------------------------
+
+static void DoubleAll(int[] numbers)
+{
+    for (int i = 0; i &lt; numbers.Length; i++)
+        numbers[i] = numbers[i] * 2;
+}
+//--------------------------------------------------------------------</div>
+        <div class="question">🤔 מה אתם מצפים לראות בפלט?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט המצופה...."></textarea>
+        <p style="margin-top:14px;"><strong>הריצו את הקוד ◀</strong></p>
+        <div class="question">🤔 מה קיבלתם?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט שהתקבל..."></textarea>
+        <div class="question">🤔 למה קיבלתם תוצאה זו? מה ההבדל בין שלב 1 לשלב 2?</div>
+        <textarea class="answer-box" placeholder="כתבו את ההסבר שלכם לתוצאה שהתקבלה..."></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== SECTION 3: KEEPING THE ORIGINAL ===== -->
+  <div class="section">
+    <div class="section-header">חלק ג׳ – מה אם לא נרצה לשנות את המקור?</div>
+    <div class="section-body">
+
+      <div class="file-nudge">
+        📁 צרו פרויקט חדש ב-Visual Studio. שם הקובץ: <code>KeepOriginal.cs</code>
+      </div>
+
+      <div class="step">
+        <div class="step-label">המשימה</div>
+        <p>ראינו שהעברת מערך לפעולה משנה את המערך המקורי. אבל מה אם נרצה לשמור על ערכי המקור?</p>
+        <p>נניח שיש לנו מערך של מרחקים לערים שונות (בקילומטרים). נרצה שהפעולה תחשב גם את המרחק הלוך-חזור לכל עיר – אבל גם תשמור על המרחקים לכיוון אחד, המקוריים.</p>
+        <p><b> התבוננו בקוד והשלימו היכן שמסומן ב- <i>?????</i></b></p>
+        <div class="code-block">static void Main()
+{
+    int[] distances = {60, 45, 90, 30, 120};
+
+    Console.WriteLine("--- distances before ---");
+    for (int i = 0; i &lt; distances.Length; i++)
+        Console.WriteLine("distances[" + i + "] = " + distances[i]);
+
+    // call DoubleAll
+    ?????
+
+    Console.WriteLine("--- original distances after method (not changed) ---");
+    for (int i = 0; i &lt; distances.Length; i++)
+        Console.WriteLine("distances[" + i + "] = " + distances[i]);
+
+    // print round-trip distances (מרחקים הלוך-חזור) computed in DoubleAll
+    ?????
+}
+
+// compute round-trip הלוך-חזור
+static ????? DoubleAll(?????)
+{
+    ?????
+}</div>
+
+        <p>ישנן שתי דרכים לפתור את הבעיה. בחרו אחת מהן, לחצו על הרמז המתאים, וממשו:</p>
+
+        <div class="approach-container">
+          <div class="approach-option">
+            <button class="hint-btn" style="font-size:1rem; padding:10px 24px; width:100%;" onclick="toggleHint(this)">רמז לדרך א׳</button>
+            <div class="hint-content" style="width:100%; box-sizing:border-box; text-align:right;">
+              המערך החדש (הלוך-חזור) מוגדר בתוך הפעולה DoubleAll, והיא מחזירה אותו.
+            </div>
+          </div>
+          <div class="approach-option">
+            <button class="hint-btn" style="font-size:1rem; padding:10px 24px; width:100%;" onclick="toggleHint(this)">רמז לדרך ב׳</button>
+            <div class="hint-content" style="width:100%; box-sizing:border-box; text-align:right;">
+              המערך החדש (הלוך-חזור) מוגדר ב- <code>Main</code> ומועבר לפעולה כפרמטר.
+            </div>
+          </div>
+        </div>
+
+        <p>ממשו את הדרך שבחרתם, הריצו, והדפיסו את שני המערכים.</p>
+        <div class="question">🤔 מה אתם מצפים לראות בפלט?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט המצופה...."></textarea>
+        <div class="question">🤔 מה קיבלתם?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט שהתקבל..."></textarea>
+        <div class="question">🤔 למה קיבלתם תוצאה זו?</div>
+        <textarea class="answer-box" placeholder="כתבו את ההסבר שלכם לתוצאה שהתקבלה..."></textarea>
+      </div>
+
+      <hr class="divider">
+
+      <div class="step">
+        <div class="step-label">עכשיו נסו גם את הדרך השנייה</div>
+
+        <div class="approach-container">
+          <div class="approach-option">
+            <button class="hint-btn" style="font-size:1rem; padding:10px 24px; width:100%;" onclick="toggleHint(this)">רמז לדרך א׳</button>
+            <div class="hint-content" style="width:100%; box-sizing:border-box; text-align:right;">
+              המערך החדש (הלוך-חזור) מוגדר בתוך הפעולה עצמה, והפעולה מחזירה אותו.
+            </div>
+          </div>
+          <div class="approach-option">
+            <button class="hint-btn" style="font-size:1rem; padding:10px 24px; width:100%;" onclick="toggleHint(this)">רמז לדרך ב׳</button>
+            <div class="hint-content" style="width:100%; box-sizing:border-box; text-align:right;">
+              המערך החדש (הלוך-חזור) מוגדר ב- <code>Main</code> ומועבר לפעולה כפרמטר.
+            </div>
+          </div>
+        </div>
+
+        <p>ממשו את הדרך השנייה והריצו.</p>
+        <div class="question">🤔 מה אתם מצפים לראות בפלט?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט המצופה...."></textarea>
+        <div class="question">🤔 מה קיבלתם?</div>
+        <textarea class="answer-box" placeholder="תארו את הפלט שהתקבל..."></textarea>
+        <div class="question">🤔 למה קיבלתם תוצאה זו?</div>
+        <textarea class="answer-box" placeholder="כתבו את ההסבר שלכם לתוצאה שהתקבלה..."></textarea>
+      </div>
+      <div style="background:#f0fdf4; border: 2px solid #86efac; border-radius:8px; padding:12px 16px; margin-top:12px; font-size:0.95rem; color:#166534;">
+        💡 שתי הדרכים נכונות באתה מידה. כיום בשפת-C# נהוג יותר להשתמש בדרך א׳ – הפעולה אחראית על יצירת המערך והחזרתו. אבל שתי הדרכים תקינות ונמצאות בשימוש.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style="background:#eef2ff; border:2px solid #2b4a8f; border-radius:10px; padding:25px; margin-bottom:45px;">
+      <div style="font-weight:bold; color:#2b4a8f; font-size:1.1rem; margin-bottom:12px;">שאלת סיכום:</div>
+      <div class="question">🤔 בהתבסס על מה שראינו בחלקים א׳–ג׳, סכמו את ההבדל המרכזי בין עבודה עם משתנים מטיפוס בסיסי (primitive type) לעומת עבודה עם משתנים מטיפוס מורכב (כמו למשל מערך)?</div>
+      <textarea class="answer-box" style="min-height:80px;" placeholder="כתבו את תשובתכם..."></textarea>
+    </div>
+
+    <hr class="divider">
+
+    <div style="background:#fff7ed; border:1px solid #fdba74; border-radius:8px; padding:12px 16px; margin-top:30px; font-size:0.95rem; color:#9a3412;">
+      📤 <strong>הגשה דרך Google Classroom:</strong>
+      <ol style="margin:8px 0 0 0; padding-right:20px;">
+        <li>קובץ התשובות</li>
+        <li><code>ArrayCopy.cs</code></li>
+        <li><code>PassParameter.cs</code></li>
+        <li><code>KeepOriginal.cs</code></li>
+      </ol>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 25px; font-size: 1.5rem; color: #cbd5e0;">
+    ✦✦✦
+  </div>
+  <div style="text-align: center; margin-top: 15px; margin-bottom: -30px; font-size: 0.85rem; color: #9ca3af;">
+   חגית ידוב © Hagit Yidov, 2026
+  </div>
+
+</div>
+
+<script>
+  function toggleHint(btn) {
+    const hint = btn.nextElementSibling;
+    if (hint.classList.contains('visible'))
+      hint.classList.remove('visible');
+    else
+      hint.classList.add('visible');
+  }
+</script>
+
+</body>
+</html>
